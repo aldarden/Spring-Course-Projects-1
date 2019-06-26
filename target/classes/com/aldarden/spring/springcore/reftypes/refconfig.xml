@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- JUST A NOTE: Always start with the independent bean (in this case scores) -->
+
+	<bean name="scores" class="com.aldarden.spring.springcore.reftypes.Scores"
+		p:maths="80" p:physics="90" p:chemistry="78" />
+
+
+	<!-- This is the dependent class (Student) as it depends on the scores bean -->
+
+	<!-- We can use p: reference here for the property instead of using the 
+		tags: <bean name = "student" class = "..." p:scores-ref = "scores"/> -->
+	<bean name="student" class="com.aldarden.spring.springcore.reftypes.Student">
+
+
+		<!-- We are making a property called scores as this is the injected dependency -->
+
+		<!-- We can also use the ref tag inside of the initial property tag: <property 
+			name = "scores" ref = "scores"/> -->
+
+
+		<property name="scores">
+			<!-- We are referencing the bean scores because this is what fills our 
+				property scores for the class Student -->
+			<ref bean="scores" />
+		</property>
+
+
+
+
+	</bean>
+
+
+
+</beans>

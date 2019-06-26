@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+
+	<bean class="com.aldarden.spring.springcore.constructorinjection.Address"
+		name="address" p:hno="123" p:street="mira mesa" p:city="san diego" />
+
+	<!-- This is constructor injection, previously we have used setter injection. 
+		What this does is uses the constructor created in the Employee class and 
+		we provide arguments into the bean for the constructor to use. Getters/setters 
+		are not used. -->
+
+	<bean class="com.aldarden.spring.springcore.constructorinjection.Employee"
+		name="employee" c:id = "123" c:address-ref = "address"/>
+	
+
+</beans>
+
+
+<!-- Can only use inner beans when there is a has-a relationship (composite 
+	relationship) and the objects are reference objects -->

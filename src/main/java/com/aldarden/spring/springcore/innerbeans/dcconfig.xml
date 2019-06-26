@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+
+	<!-- The outer bean is the Employee class (bean), we set the name and id 
+		number here -->
+	<bean class="com.aldarden.spring.springcore.innerbeans.Employee"
+		name="employee" p:id="123" scope="singleton">
+		<!-- scope Prototype creates a new bean object for each type it is called, singleton creates one object for multiple uses -->
+		<!-- We create a property for the outer bean (Employee) named address. 
+			We are creating an address (inner) bean that is used as the address property 
+			of the outer bean Employee -->
+		<property name="address">
+			<bean class="com.aldarden.spring.springcore.innerbeans.Address"
+				p:hno="700" p:street="Mira Mesa Blvd" p:city="San Diego" />
+
+		</property>
+
+	</bean>
+
+
+</beans>
+
+
+<!-- Can only use inner beans when there is a has-a relationship (composite 
+	relationship) and the objects are reference objects -->

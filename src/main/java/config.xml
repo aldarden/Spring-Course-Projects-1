@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans.xsd 
+							http://www.springframework.org/schema/context 
+							http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+
+	<!--  Can use the p-namespace and add property values into bean tag like so
+		<bean name="emp" class="com.aldarden.spring.springcore.Employee" p:id="20" p:name="alex"/>
+	 -->
+	<bean name="emp" class="com.aldarden.spring.springcore.Employee">
+	
+		<!-- Can also put the value inside of the property tag to save a line like so:
+				<property name = "id" value = "20"/>
+		 -->
+		<property name="id">
+			<value>20</value>
+		</property>
+		<property name="name">
+			<value>Alex</value>
+		</property>
+	</bean>
+</beans>
